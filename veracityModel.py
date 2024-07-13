@@ -9,8 +9,8 @@ from gnews import GNews
 import re
 import requests
 
-NEWS_API_KEY=os.environ["NEWSAPIKEY"]
-WORLD_NEWS_API_KEY=os.environ["WORLDNEWSAPIKEY"]
+NEWS_API_KEY=os.environ["NEWS_API_KEY"]
+WORLD_NEWS_API_KEY=os.environ["WORLD_NEWS_API_KEY"]
 
 
 
