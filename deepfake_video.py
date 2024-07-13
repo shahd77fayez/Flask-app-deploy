@@ -116,7 +116,7 @@ def Vidpredict(vid):
     path_to_model = 'Models/Model.pt'  # Replace with the correct path
     video_dataset = ValidationDataset(vid, sequence_length=100, transform=train_transforms)
     model = Model(num_classes=2)
-    model.load_state_dict(torch.load(path_to_model, map_location=torch.device('cpu')))
+    model.load_state_dict(torch.load(path_to_model, map_location=torch.device('gpu')))
     model.eval()
 
     # Load the video frames
