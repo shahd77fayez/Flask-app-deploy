@@ -381,8 +381,8 @@ def hello():
     })
 def start_webscraping():
     #Run the webscraping script
-    subprocess.Popen(['py', 'webscrap_ar.py'])
-    subprocess.Popen(['py', 'webscrap_en.py'])
+    subprocess.Popen(['python3', 'webscrap_ar.py'])
+    subprocess.Popen(['python3', 'webscrap_en.py'])
 if __name__ == "__main__":
     start_webscraping()
     app.run(debug=True)
