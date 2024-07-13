@@ -9,7 +9,6 @@ from config import ApplicationConfig
 from flask_bcrypt import Bcrypt
 from veracityModel import Search_and_detect,predict_Arabic_Text
 from deepfake_Image import predict_image
-from deepfake_video import Vidpredict
 from ocr import Image_extract_english, Image_extract_arabic
 from langdetect import detect
 import subprocess
@@ -320,32 +319,6 @@ def get_history():
     history_dict = [hist.to_dict() for hist in all_history]
 
     return jsonify(history_dict), 200
-@app.route("/api/VideoPredict", methods=['POST'])
-def Videopredict():
-   user_id = session.get("user_id")
-   if not user_id:
-      return jsonify({'error': 'Unauthorized'}), 204
-   
-   if 'video' not in request.files:
-      return jsonify({'error': 'No file part'}), 400
-   file  =request.files['video']
-   if file.filename == '':
-     return jsonify({'error': 'No video selected for uploading'}), 400
-   # Save the uploaded file to a temporary location
-   # Save the uploaded file to a temporary location
-   video_path = os.path.join('', file.filename)
-   file.save(video_path)
-    
-    # Perform prediction using Vidpredict
-   prediction = Vidpredict(video_path)
-   confidencee=prediction[1]
-   if prediction[0] == 1:
-        print("REAL")
-        label="REAL"
-   else:
-        print("FAKE")
-        label="FAKE"
-   return jsonify({'label': label,'confidence':confidencee })
 @app.route("/api/ImagePredict", methods=['POST'])
 def Imagepredict():
     user_id = session.get("user_id")
